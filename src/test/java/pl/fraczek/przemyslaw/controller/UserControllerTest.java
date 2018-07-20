@@ -26,7 +26,7 @@ public class UserControllerTest {
         
         assertEquals(user.getEmail(), newEmail);
         assertTrue(result.isSuccess());
-        assertEquals(result.getMassage() ,"Email has been changed to" + newEmail);
+        assertEquals(result.getMassage() ,"Email has been changed to " + newEmail);
     }
 
     @Test
@@ -50,7 +50,7 @@ public class UserControllerTest {
         Response result = controller.changeNumber(USER, newNumber);
         User user = repository.get(USER.getName());
 
-        assertEquals(result.getMassage() , "Number has been changed to" + newNumber);
+        assertEquals(result.getMassage() , "Number has been changed to " + newNumber);
         assertTrue(result.isSuccess());
         assertEquals(user.getNumber() ,newNumber);
 
@@ -67,5 +67,26 @@ public class UserControllerTest {
         assertEquals(user.getNumber() , USER.getNumber());
         assertFalse(result.isSuccess());
         assertEquals(result.getMassage() ,"New number is invalid");
+    }
+
+    @Test
+    public void shouldThrowExceptionWhenNewNumberItIsSame() {
+        repository.add(USER);
+
+        Response result = controller.changeNumber(USER, USER.getNumber());
+
+        assertFalse(result.isSuccess());
+        assertEquals(result.getMassage() ,"New phone number it's the same as old");
+
+    }
+
+    @Test
+    public void shouldThrowExceptionWhenNewEmailItIsSame() {
+        repository.add(USER);
+
+        Response result = controller.changeEmail(USER, USER.getEmail());
+
+        assertFalse(result.isSuccess());
+        assertEquals(result.getMassage(),"New E-mail it's same as old");
     }
 }

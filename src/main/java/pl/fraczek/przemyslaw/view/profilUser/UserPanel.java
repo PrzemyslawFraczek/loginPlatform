@@ -18,11 +18,11 @@ public class UserPanel {
     public void userPanel(User user) {
         int answer;
         do {
-            reader.display("Hello " + user.getName());
-            reader.display(user.getName() + " What you want to do");
-            reader.display("Change email - 1");
-            reader.display("Change number - 2");
-            reader.display("Logout number - 3");
+            reader.display("Hello " + user.getName() + "\n");
+            reader.display(user.getName() + " What you want to do\n");
+            reader.display("Change email - 1\n");
+            reader.display("Change number - 2\n");
+            reader.display("Logout - 3 \n" );
             answer = reader.readInt();
 
             if (answer == 1) {

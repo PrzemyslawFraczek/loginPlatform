@@ -20,6 +20,9 @@ public class UserController {
         if (!validator.emailIsCorrect(newEmail)) {
             response.setSuccess(false);
             response.setMassage("New email is invalid");
+        }else if(user.getEmail().equals(newEmail)){
+            response.setSuccess(false);
+            response.setMassage("New E-mail it's same as old");
         } else {
             response.setSuccess(true);
             response.setMassage("Email has been changed to " + newEmail);
@@ -33,10 +36,14 @@ public class UserController {
 
         Response response = new Response();
 
-        if (!validator.numberIsCorrect(newNumber)) {
+        if (!validator.numberIsCorrect(newNumber) ) {
             response.setSuccess(false);
             response.setMassage("New number is invalid");
-        } else {
+        }else if(user.getNumber().equals(newNumber)){
+            response.setSuccess(false);
+            response.setMassage("New phone number it's the same as old");
+        }
+        else {
             response.setSuccess(true);
             response.setMassage("Number has been changed to " + newNumber);
             user.setNumber(newNumber);
