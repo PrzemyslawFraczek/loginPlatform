@@ -3,6 +3,16 @@ package pl.fraczek.przemyslaw.model;
 public class Response {
     private String massage;
     private boolean success;
+    private User user;
+
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public String getMassage() {
         return massage;

@@ -5,10 +5,15 @@ import java.util.Scanner;
 public class Reader {
     private Scanner scanner = new Scanner(System.in);
 
-    public String readInforamtion(){
+    public String readInformation() {
         return scanner.next();
     }
-    public void display(String massage){
+
+    public void display(String massage) {
         System.out.println(massage);
+    }
+
+    public int readInt() {
+        return scanner.nextInt();
     }
 }

@@ -17,4 +17,14 @@ public class InMemoryRepository implements UserRepository {
         users.put(user.getName(),user);
         return user;
     }
+
+    @Override
+    public User get(String name) {
+        return users.get(name);
+    }
+
+    @Override
+    public void update(User user) {
+        users.replace(user.getName() ,user);
+    }
 }

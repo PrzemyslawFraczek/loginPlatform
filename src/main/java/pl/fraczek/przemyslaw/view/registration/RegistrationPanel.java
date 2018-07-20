@@ -13,21 +13,21 @@ public class RegistrationPanel {
         this.controller = controller;
     }
 
-    public Response register(){
+    public Response register() {
         reader.display("Give me your name");
-        String name = reader.readInforamtion();
+        String name = reader.readInformation();
 
 
         reader.display("Give me your password");
-        String password = reader.readInforamtion();
+        String password = reader.readInformation();
 
         reader.display("Give me your E-mail");
-        String email = reader.readInforamtion();
+        String email = reader.readInformation();
 
         reader.display("Give me your number");
-        String number = reader.readInforamtion();
+        String number = reader.readInformation();
 
-        return controller.add(name,password,email,number);
+        return controller.add(name, password, email, number);
     }
 
 }
