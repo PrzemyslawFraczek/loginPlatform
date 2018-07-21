@@ -15,10 +15,10 @@ public class LoginPanel {
 
     public Response login(){
 
-        reader.display("Please give your Name");
+        reader.display("Please, type your Name:");
         String name = reader.readInformation();
 
-        reader.display("Please give your password");
+        reader.display("Please, type your password:");
         String password = reader.readInformation();
 
         return controller.login(name,password);

@@ -19,24 +19,24 @@ public class UserPanel {
         int answer;
         do {
             reader.display("Hello " + user.getName() + "\n");
-            reader.display(user.getName() + " What you want to do\n");
-            reader.display("Change email - 1\n");
-            reader.display("Change number - 2\n");
-            reader.display("Logout - 3 \n" );
+            reader.display(user.getName() + " Select action to perform \n");
+            reader.display("Change email - 1");
+            reader.display("Change phone number - 2");
+            reader.display("Logout - 3 " );
             answer = reader.readInt();
 
             if (answer == 1) {
-                reader.display("What is to be new");
+                reader.display("Type new email address:");
                 String newEmail = reader.readInformation();
                 reader.display(controller.changeEmail(user, newEmail).getMassage());
             }
             if (answer == 2) {
-                reader.display("What is to be new");
+                reader.display("Type new phone number:");
                 String newNumber = reader.readInformation();
                 reader.display(controller.changeNumber(user, newNumber).getMassage());
             }
             if (answer != 1 && answer != 2 && answer != 3) {
-                reader.display(answer + "This option is not available");
+                reader.display(answer + "There is no such option. Please try again");
             }
         } while (answer != 3);
 

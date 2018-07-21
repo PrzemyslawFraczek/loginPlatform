@@ -22,7 +22,7 @@ public class LoginControllerTest {
 
 
     @Test
-    public void shouldLoginWhenEverythingIsCorrect() {
+    public void shouldLoginWhenDataAreCorrect() {
 
 
         User user = repository.add(new User(NAME, PASSWORD, "aste2@o2.pl", "513546997"));
@@ -35,11 +35,11 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void shouldThrowExceptionWhenUserDoestExist() {
+    public void shouldThrowExceptionWhenUserDoesNotExist() {
         Response result = controller.login(NAME, PASSWORD);
 
         assertFalse(result.isSuccess());
-        assertEquals(result.getMassage() ,"User about this name " + NAME + " doesn't exist" );
+        assertEquals(result.getMassage() ,"Specified user does not exist: " + NAME );
     }
 
     @Test

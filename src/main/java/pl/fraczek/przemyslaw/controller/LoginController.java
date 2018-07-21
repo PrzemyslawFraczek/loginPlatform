@@ -18,7 +18,7 @@ public class LoginController {
 
         if (!repository.exist(name)) {
             response.setSuccess(false);
-            response.setMassage("User about this name " + name + " doesn't exist");
+            response.setMassage("Specified user does not exist: " + name);
         } else {
             User user = repository.get(name);
             if (!user.getPassword().equals(password)) {

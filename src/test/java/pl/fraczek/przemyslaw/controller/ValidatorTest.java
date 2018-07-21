@@ -59,7 +59,7 @@ public class ValidatorTest {
     }
 
     @Test
-    public void shouldReturnFalseWhenNameDoestHaveAGoodLength() {
+    public void shouldReturnFalseWhenNameDoesNotHasACorrectLength() {
 
         String tooShortName = "as";
         boolean result = validator.nameTooShort(tooShortName);
@@ -68,7 +68,7 @@ public class ValidatorTest {
     }
 
     @Test
-    public void shouldReturnTrueWhenNameHasAGoodLength() {
+    public void shouldReturnTrueWhenNameHasACorrectLength() {
         String correctName = "Franklin";
         boolean result = validator.nameTooShort(correctName);
 

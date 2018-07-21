@@ -20,49 +20,49 @@ public class RegistrationControllerTest {
 
 
     @Test
-    public void shouldCreateUserWhenEverythingIsCorrect() {
+    public void shouldCreateUserWhenInputDataAreCorrect() {
         Response result = controller.add(CORRECT_NAME, CORRECT_PASSWORD, CORRECT_EMAIL, CORRECT_NUMBER);
 
         assertTrue(repository.exist(CORRECT_NAME));
-        assertEquals(result.getMassage() , "Hello new user " + CORRECT_NAME);
+        assertEquals(result.getMassage() , "Hello " + CORRECT_NAME);
         assertTrue(result.isSuccess());
     }
 
     @Test
-    public void shouldThrowExceptionWhenNameIsTooShort() {
+    public void shouldThrowExceptionWhenUserNameIsTooShort() {
 
         String tooShortName = "EQ";
         Response result = controller.add(tooShortName, CORRECT_PASSWORD, CORRECT_EMAIL, CORRECT_NUMBER);
 
-        assertEquals(result.getMassage(),"Name is too short");
+        assertEquals(result.getMassage(),"User name is too short.");
         assertFalse(result.isSuccess());
     }
 
     @Test
-    public void shouldThrowExceptionWhenNameIsBusy() {
+    public void shouldThrowExceptionWhenNameIsOccupied() {
         controller.add(CORRECT_NAME,CORRECT_PASSWORD,CORRECT_EMAIL,CORRECT_NUMBER);
         Response result = controller.add(CORRECT_NAME, CORRECT_PASSWORD, CORRECT_EMAIL, CORRECT_NUMBER);
 
-        assertEquals(result.getMassage(),"Name's user is busy");
+        assertEquals(result.getMassage(),"Specified user name is occupied.");
         assertFalse(result.isSuccess());
     }
 
     @Test
-    public void shouldThrowExceptionWhenPasswordInvalid() {
+    public void shouldThrowExceptionWhenPasswordIsInvalid() {
         String invalidPassword = "frank";
         Response result = controller.add(CORRECT_NAME, invalidPassword, CORRECT_EMAIL, CORRECT_NUMBER);
 
-        assertEquals(result.getMassage() ,"Password is incorrect. The password should have at least 8 characters, " +
-                "one digit, one special character and one small and large letter");
+        assertEquals(result.getMassage() ,"Password is incorrect. The password should have at least 8 characters" +
+                ", one digit, one special character and one capital letter.");
         assertFalse(result.isSuccess());
     }
 
     @Test
-    public void shouldThrowExceptionWhenEmailInvalid() {
+    public void shouldThrowExceptionWhenEmailIsInvalid() {
         String invalidEmail = "as2o2.pl";
         Response result = controller.add(CORRECT_NAME, CORRECT_PASSWORD, invalidEmail, CORRECT_NUMBER);
 
-        assertEquals(result.getMassage() ,"E-mail is invalid");
+        assertEquals(result.getMassage() ,"Email address is invalid.");
         assertFalse(result.isSuccess());
 
     }
@@ -72,7 +72,7 @@ public class RegistrationControllerTest {
         String numberInvalid = "1234567n";
         Response result = controller.add(CORRECT_NAME, CORRECT_PASSWORD, CORRECT_EMAIL, numberInvalid);
 
-        assertEquals(result.getMassage(),"Number is invalid");
+        assertEquals(result.getMassage(),"Phone number is invalid.");
         assertFalse(result.isSuccess());
 
     }

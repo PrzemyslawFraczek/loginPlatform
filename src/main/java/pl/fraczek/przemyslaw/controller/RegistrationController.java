@@ -19,23 +19,23 @@ public class RegistrationController {
 
         if(repository.exist(name)){
             response.setSuccess(false);
-            response.setMassage("Name's user is busy");
+            response.setMassage("Specified user name is occupied.");
         }else if(validator.nameTooShort(name)){
             response.setSuccess(false);
-            response.setMassage("Name is too short");
+            response.setMassage("User name is too short.");
         }else if(!validator.passwordIsCorrect(password)){
             response.setSuccess(false);
             response.setMassage("Password is incorrect. The password should have at least 8 characters, " +
-                    "one digit, one special character and one small and large letter");
+                    "one digit, one special character and one capital letter.");
         }else if(!validator.emailIsCorrect(email)){
             response.setSuccess(false);
-            response.setMassage("E-mail is invalid");
+            response.setMassage("Email address is invalid.");
         }else if(!validator.numberIsCorrect(number)){
             response.setSuccess(false);
-            response.setMassage("Number is invalid");
+            response.setMassage("Phone number is invalid.");
         }else {
             response.setSuccess(true);
-            response.setMassage("Hello new user " + name);
+            response.setMassage("Hello " + name);
             User user = new User(name,password,email,number);
             repository.add(user);
         }

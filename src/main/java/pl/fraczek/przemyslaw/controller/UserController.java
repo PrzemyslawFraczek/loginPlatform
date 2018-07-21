@@ -19,13 +19,13 @@ public class UserController {
 
         if (!validator.emailIsCorrect(newEmail)) {
             response.setSuccess(false);
-            response.setMassage("New email is invalid");
-        }else if(user.getEmail().equals(newEmail)){
+            response.setMassage("New email address is invalid.");
+        } else if (user.getEmail().equals(newEmail)) {
             response.setSuccess(false);
-            response.setMassage("New E-mail it's same as old");
+            response.setMassage("New email address is same as previous one.");
         } else {
             response.setSuccess(true);
-            response.setMassage("Email has been changed to " + newEmail);
+            response.setMassage("Email address has been changed to " + newEmail + ".");
             user.setEmail(newEmail);
             repository.update(user);
         }
@@ -36,16 +36,15 @@ public class UserController {
 
         Response response = new Response();
 
-        if (!validator.numberIsCorrect(newNumber) ) {
+        if (!validator.numberIsCorrect(newNumber)) {
             response.setSuccess(false);
             response.setMassage("New number is invalid");
-        }else if(user.getNumber().equals(newNumber)){
+        } else if (user.getNumber().equals(newNumber)) {
             response.setSuccess(false);
-            response.setMassage("New phone number it's the same as old");
-        }
-        else {
+            response.setMassage("New phone number is the same as previous one.");
+        } else {
             response.setSuccess(true);
-            response.setMassage("Number has been changed to " + newNumber);
+            response.setMassage("Phone number has been changed to " + newNumber);
             user.setNumber(newNumber);
             repository.update(user);
         }
